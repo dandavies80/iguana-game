@@ -3,6 +3,8 @@
 import random, sys, time, math, pygame
 from pygame.locals import*
 
+musicOn = True
+
 FPS = 30 # frames per second to update the screen
 WINWIDTH = 640 # width of the program's window
 WINHEIGHT = 480 # height in pixels
@@ -136,8 +138,13 @@ def runGame():
 	scoreTime = time.time()
 	difficultyTime = time.time()
 
+	# play music
+	if musicOn:
+		pygame.mixer.music.load('music.mp3')
+		pygame.mixer.music.play(-1)
+
 	while True: # main game loop
-		
+
 		# check if we should turn off invulnerability
 		if invulnerableMode and time.time() - invulnerableStartTime > INVULNTIME:
 			invulnerableMode = False
